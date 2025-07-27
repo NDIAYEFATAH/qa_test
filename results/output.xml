@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.5 on win32)" generated="2025-07-27T19:29:00.612664" rpa="false" schemaversion="5">
+<suite id="s1" name="Qa Test" source="C:\Users\mehme\Documents\cours\M1GL\exam-qa\qa_test">
+<suite id="s1-s1" name="Lab1" source="C:\Users\mehme\Documents\cours\M1GL\exam-qa\qa_test\Lab1">
+<suite id="s1-s1-s1" name="Testcases" source="C:\Users\mehme\Documents\cours\M1GL\exam-qa\qa_test\Lab1\testcases">
+<suite id="s1-s1-s1-s1" name="Testcasesm" source="C:\Users\mehme\Documents\cours\M1GL\exam-qa\qa_test\Lab1\testcases\testcasesm.robot">
+<kw name="Creation API Session" owner="commonm" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-07-27T19:29:01.109779" level="INFO">Creating Session using : alias=fakestore, url=https://fakestoreapi.com/, headers={'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${ALIAS}</arg>
+<arg>${API_URL}</arg>
+<arg>headers=${HEADERS}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-07-27T19:29:01.109351" elapsed="0.000748"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Session creer avec l'API: ${API_URL}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-27T19:29:01.110291" elapsed="0.000525"/>
+</kw>
+<status status="PASS" start="2025-07-27T19:29:01.108540" elapsed="0.002399"/>
+</kw>
+<test id="s1-s1-s1-s1-t1" name="Update User" line="24">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-27T19:29:01.112453" level="INFO">${user_id} = ddd</msg>
+<var>${user_id}</var>
+<arg>${fake_user_id}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-27T19:29:01.111827" elapsed="0.000866"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-07-27T19:29:01.113614" level="INFO">${user_data} = {'username': 'test_user', 'password': 'test_password', 'email': 'test@exemple.com'}</msg>
+<var>${user_data}</var>
+<arg>username=${fake_user_name}</arg>
+<arg>password=${fake_user_password}</arg>
+<arg>email=${fake_user_email}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-07-27T19:29:01.113044" elapsed="0.000708"/>
+</kw>
+<kw name="Update User" owner="commonm">
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-07-27T19:29:01.562598" level="INFO">PUT Request : url=https://fakestoreapi.com/users/ddd 
+ path_url=/users/ddd 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '83'} 
+ body=b'{"username": "test_user", "password": "test_password", "email": "test@exemple.com"}' 
+ </msg>
+<msg time="2025-07-27T19:29:01.563535" level="INFO">PUT Response : url=https://fakestoreapi.com/users/ddd 
+ status=400, reason=Bad Request 
+ headers={'Date': 'Sun, 27 Jul 2025 19:29:01 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '73', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"49-hC/Pxxrd/7/1JT1dQBok5DscJPQ"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jgwfeBkhfGdxoLUEIZnGLbmE%2FwVU1FdlARCzVYqzidvVB6HhsBrEFnqfDBzmPDMRGTw8w76gXbRHG1oavqmzyOnH2Q0K%2BKK3S5dyJkPB"}]}', 'Server': 'cloudflare', 'CF-RAY': '965e8b12180ff783-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"status":"error","message":"something went wrong! check your sent data"} 
+ </msg>
+<msg time="2025-07-27T19:29:01.563925" level="INFO">C:\Users\mehme\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-27T19:29:01.564606" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</msg>
+<var>${response}</var>
+<arg>${ALIAS}</arg>
+<arg>/users/${user_id}</arg>
+<arg>json=${user_data}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2025-07-27T19:29:01.114423" elapsed="0.454732">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</status>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response.ok}</arg>
+<arg>Erreur with status code ${response.status_code}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-07-27T19:29:01.569391" elapsed="0.000121"/>
+</kw>
+<return>
+<value>${response.json()['email']}</value>
+<status status="NOT RUN" start="2025-07-27T19:29:01.569590" elapsed="0.000139"/>
+</return>
+<var>${email}</var>
+<arg>${user_id}</arg>
+<arg>${user_data}</arg>
+<status status="FAIL" start="2025-07-27T19:29:01.114067" elapsed="0.455900">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</status>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${email} a été mis à jour avec succès</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-07-27T19:29:01.570344" elapsed="0.000107"/>
+</kw>
+<doc>Met à jour un utilisateur dans FakeAPI echouant</doc>
+<status status="FAIL" start="2025-07-27T19:29:01.111023" elapsed="0.459792">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</status>
+</test>
+<status status="FAIL" start="2025-07-27T19:29:00.654066" elapsed="0.917609"/>
+</suite>
+<status status="FAIL" start="2025-07-27T19:29:00.651999" elapsed="0.920992"/>
+</suite>
+<status status="FAIL" start="2025-07-27T19:29:00.649462" elapsed="0.924261"/>
+</suite>
+<status status="FAIL" start="2025-07-27T19:29:00.631545" elapsed="0.942967"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Qa Test" id="s1" pass="0" fail="1" skip="0">Qa Test</stat>
+<stat name="Lab1" id="s1-s1" pass="0" fail="1" skip="0">Qa Test.Lab1</stat>
+<stat name="Testcases" id="s1-s1-s1" pass="0" fail="1" skip="0">Qa Test.Lab1.Testcases</stat>
+<stat name="Testcasesm" id="s1-s1-s1-s1" pass="0" fail="1" skip="0">Qa Test.Lab1.Testcases.Testcasesm</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
