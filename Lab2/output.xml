@@ -1,256 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-06-27T20:34:38.977468" rpa="false" schemaversion="5">
-<suite id="s1" name="Fakestore Api Tests" source="C:\Users\Abdou Fatah Ndiaye\Desktop\QA_TEST\customer-service\testcases\fakestore_api_tests.robot">
-<kw name="Ouvrir le navigateur" owner="fakestore_keywords" type="SETUP">
+<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-07-28T14:45:19.084450" rpa="false" schemaversion="5">
+<suite id="s1" name="testcasesF" source="C:\Users\Abdou Fatah Ndiaye\Desktop\QA_TEST\qa_test\Lab2\testcases\testcasesF.robot">
+<kw name="Ouvrir le navigateur" owner="commonF" type="SETUP">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:34:39.861193" level="INFO">Opening browser 'Edge' to base url 'https://automationplayground.com/crm/'.</msg>
+<msg time="2025-07-28T14:45:19.822529" level="INFO">Opening browser 'Edge' to base url 'https://automationplayground.com/crm/'.</msg>
+<msg time="2025-07-28T14:45:20.367759" level="WARN">There was an error managing MicrosoftEdge (error sending request for url (https://msedgedriver.azureedge.net/LATEST_RELEASE_138_WINDOWS): error trying to connect: dns error: Hôte inconnu. (os error 11001)); using driver found in the cache</msg>
 <arg>${JENKINS_URL}</arg>
 <arg>Edge</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-06-27T20:34:39.861193" elapsed="5.829951"/>
+<status status="PASS" start="2025-07-28T14:45:19.822529" elapsed="7.382732"/>
 </kw>
-<status status="PASS" start="2025-06-27T20:34:39.861193" elapsed="5.829951"/>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-28T14:45:27.208220" elapsed="0.081623"/>
 </kw>
-<test id="s1-t1" name="Home page should load" line="11">
-<kw name="PRE-CONDITIONS" owner="fakestore_keywords">
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:34:47.692548" level="INFO">Slept 2 seconds.</msg>
+<msg time="2025-07-28T14:45:29.291156" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:34:45.692141" elapsed="2.000407"/>
+<status status="PASS" start="2025-07-28T14:45:27.290813" elapsed="2.000343"/>
+</kw>
+<status status="PASS" start="2025-07-28T14:45:19.822529" elapsed="9.468627"/>
+</kw>
+<test id="s1-t1" name="Id 0001 Home page should load" line="11">
+<kw name="PRE-CONDITIONS" owner="commonF">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T14:45:31.293138" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T14:45:29.292671" elapsed="2.000467"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:34:47.701533" level="INFO">Current page contains text 'Customers Are Priority One!'.</msg>
+<msg time="2025-07-28T14:45:31.303873" level="INFO">Current page contains text 'Customers Are Priority One!'.</msg>
 <arg>Customers Are Priority One!</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2025-06-27T20:34:47.692548" elapsed="0.008985"/>
+<status status="PASS" start="2025-07-28T14:45:31.293138" elapsed="0.010735"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:34:49.701888" level="INFO">Slept 2 seconds.</msg>
+<msg time="2025-07-28T14:45:33.315229" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:34:47.701533" elapsed="2.000355"/>
+<status status="PASS" start="2025-07-28T14:45:31.303873" elapsed="2.011356"/>
 </kw>
-<status status="PASS" start="2025-06-27T20:34:45.692141" elapsed="4.009747"/>
+<status status="PASS" start="2025-07-28T14:45:29.291156" elapsed="4.026681"/>
 </kw>
-<kw name="Click &quot;Login&quot; link" owner="fakestore_keywords">
+<status status="PASS" start="2025-07-28T14:45:29.291156" elapsed="4.026681"/>
+</test>
+<test id="s1-t2" name="Id 0003bis &quot;Remember me&quot; checkbox should persist email address" line="34">
+<kw name="1.Click &quot;Login&quot; links" owner="commonF">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:34:49.701888" level="INFO">Clicking element 'id=SignIn'.</msg>
-<arg>id=SignIn</arg>
+<msg time="2025-07-28T14:45:33.326584" level="INFO">Clicking element 'id=SignIn'.</msg>
+<arg>id=${BUTTON_SIGN}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:34:49.701888" elapsed="0.460156"/>
+<status status="PASS" start="2025-07-28T14:45:33.323995" elapsed="0.389977"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:34:52.164497" level="INFO">Slept 2 seconds.</msg>
+<msg time="2025-07-28T14:45:35.715323" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:34:50.163241" elapsed="2.001256"/>
+<status status="PASS" start="2025-07-28T14:45:33.714971" elapsed="2.000352"/>
 </kw>
-<status status="PASS" start="2025-06-27T20:34:49.701888" elapsed="2.463958"/>
+<status status="PASS" start="2025-07-28T14:45:33.323228" elapsed="2.392095"/>
 </kw>
-<kw name="Type valid login credentials" owner="fakestore_keywords">
+<kw name="2. Type valid login credentials" owner="commonF">
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:34:52.165846" level="INFO">Typing text 'admin@robotframeworktutorial.com' into text field 'id=email-id'.</msg>
+<msg time="2025-07-28T14:45:35.715323" level="INFO">Typing text 'admin@robotframeworktutorial.com' into text field 'id=email-id'.</msg>
 <arg>id=email-id</arg>
 <arg>${USERNAME}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:34:52.165846" elapsed="0.165571"/>
+<status status="PASS" start="2025-07-28T14:45:35.715323" elapsed="0.184784"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:34:52.331417" level="INFO">Typing password into text field 'id=password'.</msg>
-<msg time="2025-06-27T20:34:52.391052" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2025-07-28T14:45:35.900967" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-07-28T14:45:35.951168" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>id=password</arg>
 <arg>${PASSWORD}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:34:52.331417" elapsed="0.119929"/>
+<status status="PASS" start="2025-07-28T14:45:35.900603" elapsed="0.115610"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:34:54.451898" level="INFO">Slept 2 seconds.</msg>
-<arg>2</arg>
+<msg time="2025-07-28T14:45:37.016537" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:34:52.451346" elapsed="2.000552"/>
+<status status="PASS" start="2025-07-28T14:45:36.016213" elapsed="1.000324"/>
 </kw>
-<status status="PASS" start="2025-06-27T20:34:52.165846" elapsed="2.286052"/>
+<status status="PASS" start="2025-07-28T14:45:35.715323" elapsed="1.301214"/>
 </kw>
-<kw name="Click &quot;Submit&quot; button" owner="fakestore_keywords">
+<kw name="3. Click &quot;Remember me&quot; checkbox" owner="commonF">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-28T14:45:37.016537" level="INFO">Clicking element 'id=remember'.</msg>
+<arg>id=remember</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T14:45:37.016537" elapsed="0.089566"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T14:45:38.109056" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T14:45:37.106103" elapsed="1.002953"/>
+</kw>
+<status status="PASS" start="2025-07-28T14:45:37.016537" elapsed="1.092519"/>
+</kw>
+<kw name="4. Click &quot;Submit&quot; button" owner="commonF">
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:34:54.451898" level="INFO">Clicking button 'name=submit-name'.</msg>
+<msg time="2025-07-28T14:45:38.109056" level="INFO">Clicking button 'name=submit-name'.</msg>
 <arg>name=submit-name</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:34:54.451898" elapsed="1.289160"/>
+<status status="PASS" start="2025-07-28T14:45:38.109056" elapsed="0.854133"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:34:57.745778" level="INFO">Slept 2 seconds.</msg>
+<msg time="2025-07-28T14:45:40.963306" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:34:55.741058" elapsed="2.004720"/>
+<status status="PASS" start="2025-07-28T14:45:38.963189" elapsed="2.000117"/>
 </kw>
-<status status="PASS" start="2025-06-27T20:34:54.451898" elapsed="3.293880"/>
+<status status="PASS" start="2025-07-28T14:45:38.109056" elapsed="2.854250"/>
 </kw>
-<kw name="Click &quot;New Customer&quot; button" owner="fakestore_keywords">
+<kw name="5. Click &quot;Logout&quot; link" owner="commonF">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:34:57.745778" level="INFO">Clicking element 'id=new-customer'.</msg>
-<arg>id=new-customer</arg>
+<msg time="2025-07-28T14:45:40.963306" level="INFO">Clicking element 'xpath=/html/body/nav/ul/li/a'.</msg>
+<arg>xpath=/html/body/nav/ul/li/a</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:34:57.745778" elapsed="0.790008"/>
+<status status="PASS" start="2025-07-28T14:45:40.963306" elapsed="0.325746"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:34:58.558604" level="INFO">Current page contains text 'Add Customer'.</msg>
-<arg>Add Customer</arg>
+<msg time="2025-07-28T14:45:41.320162" level="INFO">Current page contains text 'Thank you for using the CRM. See you next time!'.</msg>
+<arg>Thank you for using the CRM. See you next time!</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2025-06-27T20:34:58.536993" elapsed="0.021611"/>
+<status status="PASS" start="2025-07-28T14:45:41.290349" elapsed="0.029813"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:35:00.559787" level="INFO">Slept 2 seconds.</msg>
+<msg time="2025-07-28T14:45:43.320508" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:34:58.558604" elapsed="2.001183"/>
+<status status="PASS" start="2025-07-28T14:45:41.320162" elapsed="2.000346"/>
 </kw>
-<status status="PASS" start="2025-06-27T20:34:57.745778" elapsed="2.814009"/>
+<status status="PASS" start="2025-07-28T14:45:40.963306" elapsed="2.357202"/>
 </kw>
-<kw name="Type customer email" owner="fakestore_keywords">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:35:00.559787" level="INFO">Typing text 'fatahndiaye234@gmail.com' into text field 'id=EmailAddress'.</msg>
-<arg>id=EmailAddress</arg>
-<arg>fatahndiaye234@gmail.com</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:35:00.559787" elapsed="0.140442"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:35:01.700888" level="INFO">Slept 1 second.</msg>
-<arg>1</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:35:00.700229" elapsed="1.000659"/>
-</kw>
-<status status="PASS" start="2025-06-27T20:35:00.559787" elapsed="1.141101"/>
-</kw>
-<kw name="Type customer first name" owner="fakestore_keywords">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:35:01.700888" level="INFO">Typing text 'Abdou' into text field 'id=FirstName'.</msg>
-<arg>id=FirstName</arg>
-<arg>Abdou</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:35:01.700888" elapsed="0.107838"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:35:02.809105" level="INFO">Slept 1 second.</msg>
-<arg>1</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:35:01.808726" elapsed="1.000379"/>
-</kw>
-<status status="PASS" start="2025-06-27T20:35:01.700888" elapsed="1.109287"/>
-</kw>
-<kw name="Type customer last name" owner="fakestore_keywords">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:35:02.810175" level="INFO">Typing text 'Ndiaye' into text field 'id=LastName'.</msg>
-<arg>id=LastName</arg>
-<arg>Ndiaye</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:35:02.810175" elapsed="0.114161"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:35:03.925778" level="INFO">Slept 1 second.</msg>
-<arg>1</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:35:02.924336" elapsed="1.001442"/>
-</kw>
-<status status="PASS" start="2025-06-27T20:35:02.810175" elapsed="1.116684"/>
-</kw>
-<kw name="Type customer city" owner="fakestore_keywords">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:35:03.930869" level="INFO">Typing text 'New York' into text field 'id=City'.</msg>
-<arg>id=City</arg>
-<arg>New York</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:35:03.929873" elapsed="0.249672"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:35:05.180344" level="INFO">Slept 1 second.</msg>
-<arg>1</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:35:04.179545" elapsed="1.000799"/>
-</kw>
-<status status="PASS" start="2025-06-27T20:35:03.928810" elapsed="1.251534"/>
-</kw>
-<kw name="Select customer state" owner="fakestore_keywords">
-<kw name="Select From List By Value" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:35:05.180344" level="INFO">Selecting options from selection list 'id=StateOrRegion' by value AL.</msg>
-<arg>id=StateOrRegion</arg>
-<arg>AL</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<status status="PASS" start="2025-06-27T20:35:05.180344" elapsed="0.109723"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:35:06.290461" level="INFO">Slept 1 second.</msg>
-<arg>1</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:35:05.290067" elapsed="1.000394"/>
-</kw>
-<status status="PASS" start="2025-06-27T20:35:05.180344" elapsed="1.110117"/>
-</kw>
-<kw name="Select gender" owner="fakestore_keywords">
+<kw name="6. Click &quot;Login&quot; link again" owner="commonF">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:35:06.293718" level="INFO">Clicking element '//*[@id="loginform"]/div/div/div/div/form/div[6]/input[1]'.</msg>
-<arg>//*[@id="loginform"]/div/div/div/div/form/div[6]/input[1]</arg>
+<msg time="2025-07-28T14:45:43.320508" level="INFO">Clicking element 'xpath=/html/body/nav/ul/li/a'.</msg>
+<arg>xpath=/html/body/nav/ul/li/a</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:35:06.293718" elapsed="0.086534"/>
+<status status="PASS" start="2025-07-28T14:45:43.320508" elapsed="0.205886"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:35:07.380910" level="INFO">Slept 1 second.</msg>
-<arg>1</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:35:06.380252" elapsed="1.000658"/>
-</kw>
-<status status="PASS" start="2025-06-27T20:35:06.290461" elapsed="1.090449"/>
-</kw>
-<kw name="Optionally check promotion checkbox" owner="fakestore_keywords">
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:35:07.380910" level="INFO">Clicking element 'name=promos-name'.</msg>
-<arg>name=promos-name</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:35:07.380910" elapsed="0.081290"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:35:08.463069" level="INFO">Slept 1 second.</msg>
-<arg>1</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:35:07.462200" elapsed="1.000869"/>
-</kw>
-<status status="PASS" start="2025-06-27T20:35:07.380910" elapsed="1.082159"/>
-</kw>
-<kw name="Clique &quot;Submit&quot; button" owner="fakestore_keywords">
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-06-27T20:35:08.463069" level="INFO">Clicking button '//*[@id="loginform"]/div/div/div/div/form/button'.</msg>
-<arg>//*[@id="loginform"]/div/div/div/div/form/button</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-06-27T20:35:08.463069" elapsed="0.458629"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-06-27T20:35:10.923512" level="INFO">Slept 2 seconds.</msg>
+<msg time="2025-07-28T14:45:45.527807" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-06-27T20:35:08.922734" elapsed="2.000778"/>
+<status status="PASS" start="2025-07-28T14:45:43.527396" elapsed="2.000961"/>
 </kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-06-27T20:35:10.923512" elapsed="2.341616"/>
+<status status="PASS" start="2025-07-28T14:45:43.320508" elapsed="2.208500"/>
 </kw>
-<status status="PASS" start="2025-06-27T20:35:08.463069" elapsed="4.802059"/>
-</kw>
-<status status="PASS" start="2025-06-27T20:34:45.691144" elapsed="27.573984"/>
+<status status="PASS" start="2025-07-28T14:45:33.319853" elapsed="12.210124"/>
 </test>
-<status status="PASS" start="2025-06-27T20:34:38.980463" elapsed="34.284665"/>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-07-28T14:45:45.534668" elapsed="2.452006"/>
+</kw>
+<status status="PASS" start="2025-07-28T14:45:19.090635" elapsed="28.896039"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Fakestore Api Tests" id="s1" pass="1" fail="0" skip="0">Fakestore Api Tests</stat>
+<stat name="testcasesF" id="s1" pass="2" fail="0" skip="0">testcasesF</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2025-07-28T14:45:20.367759" level="WARN">There was an error managing MicrosoftEdge (error sending request for url (https://msedgedriver.azureedge.net/LATEST_RELEASE_138_WINDOWS): error trying to connect: dns error: Hôte inconnu. (os error 11001)); using driver found in the cache</msg>
 </errors>
 </robot>
