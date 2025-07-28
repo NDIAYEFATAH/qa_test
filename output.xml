@@ -1,606 +1,472 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.5 on win32)" generated="2025-07-27T19:34:38.596313" rpa="false" schemaversion="5">
-<suite id="s1" name="Testcasesm" source="C:\Users\mehme\Documents\cours\M1GL\exam-qa\qa_test\Lab1\testcases\testcasesm.robot">
-<kw name="Creation API Session" owner="commonm" type="SETUP">
-<kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-07-27T19:34:38.962881" level="INFO">Creating Session using : alias=fakestore, url=https://fakestoreapi.com/, headers={'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>${ALIAS}</arg>
-<arg>${API_URL}</arg>
-<arg>headers=${HEADERS}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-07-27T19:34:38.962696" elapsed="0.000327"/>
+<robot generator="Robot 7.2.2 (Python 3.13.5 on win32)" generated="2025-07-28T15:04:00.955023" rpa="false" schemaversion="5">
+<suite id="s1" name="Testcasesm" source="C:\Users\mehme\Documents\cours\M1GL\exam-qa\qa_test\Lab2\testcases\testcasesm.robot">
+<kw name="Ouvrir le navigateur" owner="commonm" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:01.526078" level="INFO">Opening browser 'Edge' to base url 'https://automationplayground.com/crm/'.</msg>
+<msg time="2025-07-28T15:04:02.060104" level="WARN">There was an error managing MicrosoftEdge (error sending request for url (https://msedgedriver.azureedge.net/LATEST_RELEASE_138_WINDOWS): error trying to connect: dns error: Hôte inconnu. (os error 11001)); using driver found in the cache</msg>
+<arg>${BASE_URL}</arg>
+<arg>Edge</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-28T15:04:01.525865" elapsed="4.623479"/>
 </kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>Session creer avec l'API: ${API_URL}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-07-27T19:34:38.963122" elapsed="0.000457"/>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-28T15:04:06.161737" elapsed="0.041884"/>
 </kw>
-<status status="PASS" start="2025-07-27T19:34:38.962237" elapsed="0.001411"/>
+<status status="PASS" start="2025-07-28T15:04:01.525089" elapsed="4.678663"/>
 </kw>
-<test id="s1-t1" name="Delete User" line="10">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-07-27T19:34:38.964219" level="INFO">${user_id} = 1</msg>
-<var>${user_id}</var>
-<arg>${good_user_id}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-07-27T19:34:38.964100" elapsed="0.000139"/>
-</kw>
-<kw name="Delete User" owner="commonm">
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T19:34:39.580937" level="INFO">DELETE Request : url=https://fakestoreapi.com/users/1 
- path_url=/users/1 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2025-07-27T19:34:39.581152" level="INFO">DELETE Response : url=https://fakestoreapi.com/users/1 
- status=200, reason=OK 
- headers={'Date': 'Sun, 27 Jul 2025 19:34:39 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"120-HNMhv14aQeBJetA9fBvavCZ+gdk"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=aZNNzsZeMfgFANFganWJwhJqSqBmR076JJuX4shg9xrgqdK2PMw79oicj0E390%2BG1B01itpg2rX0J3xHlZU%2BYaHSMsErS1siRnVN0cnp91k%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '965e9351ca640419-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"address":{"geolocation":{"lat":"-37.3159","long":"81.1496"},"city":"kilcoole","street":"new road","number":7682,"zipcode":"12926-3874"},"id":1,"email":"john@gmail.com","username":"johnd","password":"m38rmF$","name":{"firstname":"john","lastname":"doe"},"phone":"1-570-236-7033","__v":0} 
- </msg>
-<msg time="2025-07-27T19:34:39.581265" level="INFO">C:\Users\mehme\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T19:34:39.582454" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>${ALIAS}</arg>
-<arg>/users/${user_id}</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-07-27T19:34:38.964589" elapsed="0.617930"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<msg time="2025-07-27T19:34:39.583318" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-27T19:34:39.582721" elapsed="0.000861"/>
-</kw>
-<return>
-<value>${response.json()['email']}</value>
-<status status="PASS" start="2025-07-27T19:34:39.583684" elapsed="0.000072"/>
-</return>
-<msg time="2025-07-27T19:34:39.584256" level="INFO">${email} = john@gmail.com</msg>
-<var>${email}</var>
-<arg>${user_id}</arg>
-<status status="PASS" start="2025-07-27T19:34:38.964419" elapsed="0.619865"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>${email} a été supprimé avec succès</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-07-27T19:34:39.584525" elapsed="0.000523"/>
+<test id="s1-t1" name="Should be able to log out" line="10">
+<kw name="PRE-CONDITIONS" owner="commonm">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:06.207095" level="INFO">Opening url 'https://automationplayground.com/crm/'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-07-28T15:04:06.206879" elapsed="0.100930"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-07-27T19:34:41.586420" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
+<msg time="2025-07-28T15:04:08.308566" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-07-27T19:34:39.585380" elapsed="2.001196"/>
+<status status="PASS" start="2025-07-28T15:04:06.307964" elapsed="2.000719"/>
 </kw>
-<doc>Supprime un utilisateur dans FakeAPI passant</doc>
-<status status="PASS" start="2025-07-27T19:34:38.963693" elapsed="2.623341"/>
-</test>
-<test id="s1-t2" name="Delete User Echoue" line="17">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-07-27T19:34:41.588539" level="INFO">${user_id} = ddd</msg>
-<var>${user_id}</var>
-<arg>${fake_user_id}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-07-27T19:34:41.588365" elapsed="0.000197"/>
-</kw>
-<kw name="Delete User" owner="commonm">
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T19:34:41.722085" level="INFO">DELETE Request : url=https://fakestoreapi.com/users/ddd 
- path_url=/users/ddd 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2025-07-27T19:34:41.722232" level="INFO">DELETE Response : url=https://fakestoreapi.com/users/ddd 
- status=400, reason=Bad Request 
- headers={'Date': 'Sun, 27 Jul 2025 19:34:42 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '57', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"39-c+fGpiiXQH9CfiwB4wJOltECia0"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2BEU7ObJJ5oSBvIBTxwWDihtpkYQydaBN15n0PL%2BVKhG%2BuqXw8VG40UIFJB3ACYKiCqX9SozMqSvIh%2FhfumVWGmWAk5bCdzGnOFvnqK0vmfA%3D"}]}', 'Server': 'cloudflare', 'CF-RAY': '965e93613fce0419-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"status":"error","message":"user id should be provided"} 
- </msg>
-<msg time="2025-07-27T19:34:41.722341" level="INFO">C:\Users\mehme\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T19:34:41.723207" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</msg>
-<var>${response}</var>
-<arg>${ALIAS}</arg>
-<arg>/users/${user_id}</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="FAIL" start="2025-07-27T19:34:41.588996" elapsed="0.136373">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</status>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:41.725867" elapsed="0.000053"/>
-</kw>
-<return>
-<value>${response.json()['email']}</value>
-<status status="NOT RUN" start="2025-07-27T19:34:41.726229" elapsed="0.000058"/>
-</return>
-<var>${email}</var>
-<arg>${user_id}</arg>
-<status status="FAIL" start="2025-07-27T19:34:41.588786" elapsed="0.137734">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</status>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>${email} a été supprimé avec succès</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:41.726751" elapsed="0.000024"/>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:08.327894" level="INFO">Current page contains text 'Customers Are Priority One!'.</msg>
+<arg>text=${title_home_page}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-28T15:04:08.308831" elapsed="0.019138"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<arg>2s</arg>
+<msg time="2025-07-28T15:04:10.328642" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:41.726890" elapsed="0.000017"/>
+<status status="PASS" start="2025-07-28T15:04:08.328124" elapsed="2.000700"/>
 </kw>
-<doc>Scenario de suppression d'un utilisateur dans FakeAPI qui échoue</doc>
-<status status="FAIL" start="2025-07-27T19:34:41.587796" elapsed="0.139281">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</status>
+<status status="PASS" start="2025-07-28T15:04:06.206535" elapsed="4.122448"/>
+</kw>
+<kw name="Click Login link" owner="commonm">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:10.330806" level="INFO">Clicking element 'id=SignIn'.</msg>
+<arg>${btnSignIn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:10.330168" elapsed="0.619619"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:12.950610" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:10.950023" elapsed="2.000779"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:10.329710" elapsed="2.621260"/>
+</kw>
+<kw name="Type valid login credentials" owner="commonm">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:12.953303" level="INFO">Typing text 'admin@robotframeworktutorial.com' into text field 'id=email-id'.</msg>
+<arg>${inputEmailLogin}</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:12.952931" elapsed="0.151668"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:13.105181" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-07-28T15:04:13.165575" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${inputPasswordLogin}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:13.104768" elapsed="0.136351"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:15.242177" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:13.241364" elapsed="2.001116"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:12.952304" elapsed="2.290387"/>
+</kw>
+<kw name="Click Submit button" owner="commonm">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:15.245251" level="INFO">Clicking button 'name=submit-name'.</msg>
+<arg>${submitLogin}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:15.244915" elapsed="0.874829"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:18.120436" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:16.119892" elapsed="2.000827"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:15.244401" elapsed="2.876535"/>
+</kw>
+<kw name="Logout" owner="commonm">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:18.123991" level="INFO">Clicking element 'xpath=/html/body/nav/ul/li/a'.</msg>
+<arg>${xpathSignOut}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:18.123359" elapsed="0.655942"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:20.781004" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:18.779697" elapsed="2.001583"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:20.793969" level="INFO">Current page contains text 'Signed Out'.</msg>
+<arg>text=${title_signOut}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-28T15:04:20.781659" elapsed="0.012400"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:22.795138" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:20.794217" elapsed="2.001189"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:18.122768" elapsed="4.672840"/>
+</kw>
+<doc>Vérifie que l'utilisateur peut se déconnecter avec succès.</doc>
+<tag>Functional</tag>
+<status status="PASS" start="2025-07-28T15:04:06.205493" elapsed="16.591061"/>
 </test>
-<test id="s1-t3" name="Update User" line="24">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-07-27T19:34:41.727855" level="INFO">${user_id} = ddd</msg>
-<var>${user_id}</var>
-<arg>${fake_user_id}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-07-27T19:34:41.727709" elapsed="0.000164"/>
+<test id="s1-t2" name="Customers page should display multiple customers" line="19">
+<kw name="PRE-CONDITIONS" owner="commonm">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:22.801181" level="INFO">Opening url 'https://automationplayground.com/crm/'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-07-28T15:04:22.800941" elapsed="0.117410"/>
 </kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-07-27T19:34:41.728283" level="INFO">${user_data} = {'username': 'test_user', 'password': 'test_password', 'email': 'test@exemple.com'}</msg>
-<var>${user_data}</var>
-<arg>username=${fake_user_name}</arg>
-<arg>password=${fake_user_password}</arg>
-<arg>email=${fake_user_email}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-07-27T19:34:41.728009" elapsed="0.000293"/>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:24.919912" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:22.918612" elapsed="2.001602"/>
 </kw>
-<kw name="Update User" owner="commonm">
-<kw name="PUT On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T19:34:41.866776" level="INFO">PUT Request : url=https://fakestoreapi.com/users/ddd 
- path_url=/users/ddd 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '83'} 
- body=b'{"username": "test_user", "password": "test_password", "email": "test@exemple.com"}' 
- </msg>
-<msg time="2025-07-27T19:34:41.866901" level="INFO">PUT Response : url=https://fakestoreapi.com/users/ddd 
- status=400, reason=Bad Request 
- headers={'Date': 'Sun, 27 Jul 2025 19:34:42 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '73', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"49-hC/Pxxrd/7/1JT1dQBok5DscJPQ"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jAsuTBt127JESHxCyOIunPNuU5T%2Bsurfk0%2BJx67Uw79N4DxEQeCxTF0gqvuSqgfYVk7gbJyx5yOVJqmVaYdMWnATO6bz2q6cQAmazZCWeLg%3D"}]}', 'Server': 'cloudflare', 'CF-RAY': '965e936218750419-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"status":"error","message":"something went wrong! check your sent data"} 
- </msg>
-<msg time="2025-07-27T19:34:41.866994" level="INFO">C:\Users\mehme\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T19:34:41.869407" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</msg>
-<var>${response}</var>
-<arg>${ALIAS}</arg>
-<arg>/users/${user_id}</arg>
-<arg>json=${user_data}</arg>
-<doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<status status="FAIL" start="2025-07-27T19:34:41.728651" elapsed="0.141660">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</status>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:24.943609" level="INFO">Current page contains text 'Customers Are Priority One!'.</msg>
+<arg>text=${title_home_page}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-28T15:04:24.920568" elapsed="0.023140"/>
 </kw>
-<kw name="Should Be True" owner="BuiltIn">
-<arg>${response.ok}</arg>
-<arg>Erreur with status code ${response.status_code}</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:41.870474" elapsed="0.000027"/>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:26.944681" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:24.943848" elapsed="2.001121"/>
 </kw>
-<return>
-<value>${response.json()['email']}</value>
-<status status="NOT RUN" start="2025-07-27T19:34:41.870538" elapsed="0.000019"/>
-</return>
-<var>${email}</var>
-<arg>${user_id}</arg>
-<arg>${user_data}</arg>
-<status status="FAIL" start="2025-07-27T19:34:41.728465" elapsed="0.142179">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</status>
+<status status="PASS" start="2025-07-28T15:04:22.800454" elapsed="4.144998"/>
+</kw>
+<kw name="Click Login link" owner="commonm">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:26.947659" level="INFO">Clicking element 'id=SignIn'.</msg>
+<arg>${btnSignIn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:26.947223" elapsed="0.214798"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:29.164971" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:27.162154" elapsed="2.003001"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:26.946390" elapsed="2.219072"/>
+</kw>
+<kw name="Type valid login credentials" owner="commonm">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:29.168425" level="INFO">Typing text 'admin@robotframeworktutorial.com' into text field 'id=email-id'.</msg>
+<arg>${inputEmailLogin}</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:29.167573" elapsed="0.122117"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:29.290901" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-07-28T15:04:29.346495" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${inputPasswordLogin}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:29.290118" elapsed="0.136642"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:31.428201" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:29.427059" elapsed="2.001350"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:29.166595" elapsed="2.261990"/>
+</kw>
+<kw name="Click Submit button" owner="commonm">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:31.431403" level="INFO">Clicking button 'name=submit-name'.</msg>
+<arg>${submitLogin}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:31.431047" elapsed="0.220006"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:33.652353" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:31.651236" elapsed="2.001386"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:31.430588" elapsed="2.222227"/>
+</kw>
+<kw name="Examine customers grid for multiple records" owner="commonm">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:33.690535" level="INFO">Element 'xpath=/html/body/div/div/nav/ul/li[2]' is displayed.</msg>
+<arg>xpath=/html/body/div/div/nav/ul/li[2]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-07-28T15:04:33.654610" elapsed="0.036032"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:33.699923" level="INFO">Current page contains text 'Our Happy Customers'.</msg>
+<arg>text=${title_customer_list}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-28T15:04:33.690828" elapsed="0.009200"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:35.700798" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:33.700183" elapsed="2.000827"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:33.653677" elapsed="2.047514"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>${email} a été mis à jour avec succès</arg>
+<arg>Customers grid est visible avec plusieurs enregistrements</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:41.870867" elapsed="0.000025"/>
+<status status="PASS" start="2025-07-28T15:04:35.702242" elapsed="0.001255"/>
 </kw>
-<doc>Met à jour un utilisateur dans FakeAPI echouant</doc>
-<status status="FAIL" start="2025-07-27T19:34:41.727405" elapsed="0.143667">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/users/ddd</status>
+<doc>Vérifie que la page des clients affiche plusieurs enregistrements.</doc>
+<tag>smoke</tag>
+<status status="PASS" start="2025-07-28T15:04:22.799277" elapsed="12.905234"/>
 </test>
-<test id="s1-t4" name="Update Product" line="32">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-07-27T19:34:41.871880" level="INFO">${product_id} = 1</msg>
-<var>${product_id}</var>
+<test id="s1-t3" name="Should be able to add new customer" line="30">
+<kw name="Click New Customer button" owner="commonm">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:35.708407" level="INFO">Clicking element 'id=new-customer'.</msg>
+<arg>${btn_newCustomer}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:35.708022" elapsed="0.586140"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:36.313161" level="INFO">Current page contains text 'Add Customer'.</msg>
+<arg>text=${title_newCustomer}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-28T15:04:36.294328" elapsed="0.018913"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:38.314420" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:36.313370" elapsed="2.001316"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:35.707552" elapsed="2.607398"/>
+</kw>
+<kw name="Type customer email" owner="commonm">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:38.317586" level="INFO">Typing text 'customer@example.com' into text field 'id=EmailAddress'.</msg>
+<arg>${new_email}</arg>
+<arg>${EMAIL_CUSTOMER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:38.317032" elapsed="0.146552"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:39.464639" level="INFO">Slept 1 second.</msg>
 <arg>1</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-07-27T19:34:41.871751" elapsed="0.000149"/>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:38.463875" elapsed="1.000911"/>
 </kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-07-27T19:34:41.872235" level="INFO">${product_data} = {'title': 'Nouveau produit', 'price': '50000', 'description': ' Modication de la description'}</msg>
-<var>${product_data}</var>
-<arg>title=Nouveau produit</arg>
-<arg>price=50000</arg>
-<arg>description= Modication de la description</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-07-27T19:34:41.872082" elapsed="0.000172"/>
+<status status="PASS" start="2025-07-28T15:04:38.315966" elapsed="1.148949"/>
 </kw>
-<kw name="Update Product" owner="commonm">
-<kw name="PUT On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T19:34:42.012731" level="INFO">PUT Request : url=https://fakestoreapi.com/products/1 
- path_url=/products/1 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '94'} 
- body=b'{"title": "Nouveau produit", "price": "50000", "description": " Modication de la description"}' 
- </msg>
-<msg time="2025-07-27T19:34:42.013059" level="INFO">PUT Response : url=https://fakestoreapi.com/products/1 
- status=200, reason=OK 
- headers={'Date': 'Sun, 27 Jul 2025 19:34:42 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"60-m4XzNm9RPc4KyXT7jiQXD7Fy78c"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=t8UtLDMOczfyvG%2FFV9DnPd9TApJcPtEPoV1dDIAAnWDfd1RDimOU3GA2Z9TbfrgvBdUPzxh9Xt34HIu%2BF2SQOctmpl0ayXJd0CFFf6%2BlOYg%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '965e9362f91d0419-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"id":1,"title":"Nouveau produit","price":"50000","description":" Modication de la description"} 
- </msg>
-<msg time="2025-07-27T19:34:42.013221" level="INFO">C:\Users\mehme\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T19:34:42.014114" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>${ALIAS}</arg>
-<arg>/products/${product_id}</arg>
-<arg>json=${product_data}</arg>
-<doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-07-27T19:34:41.872643" elapsed="0.141561"/>
-</kw>
-<kw name="Should Be True" owner="BuiltIn">
-<arg>${response.ok}</arg>
-<arg>FakeAPI call failed with status code ${response.status_code}</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2025-07-27T19:34:42.014498" elapsed="0.001601"/>
-</kw>
-<return>
-<value>${response.json()['title']}</value>
-<status status="PASS" start="2025-07-27T19:34:42.016213" elapsed="0.000088"/>
-</return>
-<msg time="2025-07-27T19:34:42.016977" level="INFO">${title} = Nouveau produit</msg>
-<var>${title}</var>
-<arg>${product_id}</arg>
-<arg>${product_data}</arg>
-<status status="PASS" start="2025-07-27T19:34:41.872448" elapsed="0.144580"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>Produit mis à jour : ${title}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-07-27T19:34:42.017686" elapsed="0.000641"/>
+<kw name="Type customer first name" owner="commonm">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:39.466259" level="INFO">Typing text 'John' into text field 'id=FirstName'.</msg>
+<arg>${new_first_name}</arg>
+<arg>${FIRST_NAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:39.465940" elapsed="0.122709"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-07-27T19:34:44.022250" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
+<msg time="2025-07-28T15:04:40.590029" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-07-27T19:34:42.018736" elapsed="2.003729"/>
+<status status="PASS" start="2025-07-28T15:04:39.589153" elapsed="1.001146"/>
 </kw>
-<doc>Met à jour un produit existant dans FakeAPI</doc>
-<status status="PASS" start="2025-07-27T19:34:41.871426" elapsed="2.153413"/>
-</test>
-<test id="s1-t5" name="Update Product non passant" line="40">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-07-27T19:34:44.027444" level="INFO">${product_id} = 1lk</msg>
-<var>${product_id}</var>
-<arg>1lk</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-07-27T19:34:44.027189" elapsed="0.000297"/>
+<status status="PASS" start="2025-07-28T15:04:39.465499" elapsed="1.125095"/>
 </kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-07-27T19:34:44.028368" level="INFO">${product_data} = {'title': 'Nouveau produit', 'price': 'deux cent mille', 'description': ' Modication de la description'}</msg>
-<var>${product_data}</var>
-<arg>title=Nouveau produit</arg>
-<arg>price=deux cent mille</arg>
-<arg>description= Modication de la description</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-07-27T19:34:44.027735" elapsed="0.000678"/>
-</kw>
-<kw name="Update Product" owner="commonm">
-<kw name="PUT On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T19:34:44.159678" level="INFO">PUT Request : url=https://fakestoreapi.com/products/1lk 
- path_url=/products/1lk 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '104'} 
- body=b'{"title": "Nouveau produit", "price": "deux cent mille", "description": " Modication de la description"}' 
- </msg>
-<msg time="2025-07-27T19:34:44.159833" level="INFO">PUT Response : url=https://fakestoreapi.com/products/1lk 
- status=400, reason=Bad Request 
- headers={'Date': 'Sun, 27 Jul 2025 19:34:44 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '73', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"49-hC/Pxxrd/7/1JT1dQBok5DscJPQ"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Pq00Zu4bWlVfPd5j6j%2FNm8rdHVhkhKtsyCb8f60tgMaKnopqD9C0jkL9oxu4rrNsTooe3x%2Bc69HzQ3uVCMtg8QVAO48VYPBsZgTodGmnxbg%3D"}]}', 'Server': 'cloudflare', 'CF-RAY': '965e93708db30419-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"status":"error","message":"something went wrong! check your sent data"} 
- </msg>
-<msg time="2025-07-27T19:34:44.159947" level="INFO">C:\Users\mehme\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T19:34:44.160401" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/products/1lk</msg>
-<var>${response}</var>
-<arg>${ALIAS}</arg>
-<arg>/products/${product_id}</arg>
-<arg>json=${product_data}</arg>
-<doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<status status="FAIL" start="2025-07-27T19:34:44.033939" elapsed="0.127612">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/products/1lk</status>
-</kw>
-<kw name="Should Be True" owner="BuiltIn">
-<arg>${response.ok}</arg>
-<arg>FakeAPI call failed with status code ${response.status_code}</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:44.161795" elapsed="0.000081"/>
-</kw>
-<return>
-<value>${response.json()['title']}</value>
-<status status="NOT RUN" start="2025-07-27T19:34:44.161951" elapsed="0.000032"/>
-</return>
-<var>${title}</var>
-<arg>${product_id}</arg>
-<arg>${product_data}</arg>
-<status status="FAIL" start="2025-07-27T19:34:44.033492" elapsed="0.128608">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/products/1lk</status>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>Produit mis à jour : ${title}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:44.162393" elapsed="0.000041"/>
+<kw name="Type customer last name" owner="commonm">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:40.592796" level="INFO">Typing text 'Doe' into text field 'id=LastName'.</msg>
+<arg>${new_last_name}</arg>
+<arg>${LAST_NAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:40.592366" elapsed="0.220318"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<arg>2s</arg>
+<msg time="2025-07-28T15:04:41.813703" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:44.162614" elapsed="0.000058"/>
+<status status="PASS" start="2025-07-28T15:04:40.813045" elapsed="1.000857"/>
 </kw>
-<doc>Met à jour non passant</doc>
-<status status="FAIL" start="2025-07-27T19:34:44.026640" elapsed="0.136252">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/products/1lk</status>
-</test>
-<test id="s1-t6" name="Delete Product" line="49">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-07-27T19:34:44.164535" level="INFO">${product_id} = bad_product_id</msg>
-<var>${product_id}</var>
-<arg>bad_product_id</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-07-27T19:34:44.164341" elapsed="0.000221"/>
+<status status="PASS" start="2025-07-28T15:04:40.591729" elapsed="1.222368"/>
 </kw>
-<kw name="Delete Product" owner="commonm">
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T19:34:44.288671" level="INFO">DELETE Request : url=https://fakestoreapi.com/products/bad_product_id 
- path_url=/products/bad_product_id 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2025-07-27T19:34:44.288875" level="INFO">DELETE Response : url=https://fakestoreapi.com/products/bad_product_id 
- status=400, reason=Bad Request 
- headers={'Date': 'Sun, 27 Jul 2025 19:34:44 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '60', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"3c-qDWc7CBSCdcHfGFZgGwxOqVw5sM"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wfEL1cCn3BDnUDQG1RXpwr1LLThz%2FwHuLUAWeirIw84FmlyX8gI5qfm%2B8fp1T0etqeciOcfJ5LlsHba%2BdnPd1McPfpMupfryzHBVTTkWHdA%3D"}]}', 'Server': 'cloudflare', 'CF-RAY': '965e93714e5b0419-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"status":"error","message":"product id should be provided"} 
- </msg>
-<msg time="2025-07-27T19:34:44.289038" level="INFO">C:\Users\mehme\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T19:34:44.289898" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/products/bad_product_id</msg>
-<var>${response}</var>
-<arg>${ALIAS}</arg>
-<arg>/products/${product_id}</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="FAIL" start="2025-07-27T19:34:44.165056" elapsed="0.126297">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/products/bad_product_id</status>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:44.291683" elapsed="0.000068"/>
-</kw>
-<return>
-<value>${response.json()['title']}</value>
-<status status="NOT RUN" start="2025-07-27T19:34:44.291842" elapsed="0.000050"/>
-</return>
-<var>${title}</var>
-<arg>${product_id}</arg>
-<status status="FAIL" start="2025-07-27T19:34:44.164813" elapsed="0.127262">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/products/bad_product_id</status>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>Produit supprimé : ${title}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:44.292884" elapsed="0.000077"/>
+<kw name="Type customer city" owner="commonm">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:41.815856" level="INFO">Typing text 'New York' into text field 'id=City'.</msg>
+<arg>${new_city}</arg>
+<arg>${CITY}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:41.815469" elapsed="0.209797"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<arg>2s</arg>
+<msg time="2025-07-28T15:04:43.026803" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:44.293713" elapsed="0.000089"/>
+<status status="PASS" start="2025-07-28T15:04:42.025628" elapsed="1.001820"/>
 </kw>
-<doc>Supprime un produit dans FakeAPI non passant</doc>
-<status status="FAIL" start="2025-07-27T19:34:44.163606" elapsed="0.130973">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/products/bad_product_id</status>
-</test>
-<test id="s1-t7" name="Update Cart" line="57">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-07-27T19:34:44.297696" level="INFO">${cart_id} = 5</msg>
-<var>${cart_id}</var>
-<arg>5</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-07-27T19:34:44.297356" elapsed="0.000448"/>
+<status status="PASS" start="2025-07-28T15:04:41.814834" elapsed="1.213681"/>
 </kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-07-27T19:34:44.299266" level="INFO">${cart_data} = {'userId': '3', 'date': '2023-12-10', 'products': ''}</msg>
-<var>${cart_data}</var>
-<arg>userId=3</arg>
-<arg>date=2023-12-10</arg>
-<arg>products=${EMPTY}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-07-27T19:34:44.298238" elapsed="0.001085"/>
-</kw>
-<kw name="Update Cart" owner="commonm">
-<kw name="PUT On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T19:34:44.418255" level="INFO">PUT Request : url=https://fakestoreapi.com/carts/5 
- path_url=/carts/5 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '53'} 
- body=b'{"userId": "3", "date": "2023-12-10", "products": ""}' 
- </msg>
-<msg time="2025-07-27T19:34:44.418402" level="INFO">PUT Response : url=https://fakestoreapi.com/carts/5 
- status=200, reason=OK 
- headers={'Date': 'Sun, 27 Jul 2025 19:34:44 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"37-+SAewBkYP5qnMThkF1ulA75s+YQ"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=FrtWAWPpXNGpY1luhSbE2W0f80PisFmJ8I28OtUZg5KfQXHXhALHpAGTSCwmFcX6%2FipJBSehpgX4JtP6xTEGk%2BXllZSEWoJSPuO7KeeMDYU%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '965e93722f530419-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"id":5,"userId":"3","date":"2023-12-10","products":""} 
- </msg>
-<msg time="2025-07-27T19:34:44.418495" level="INFO">C:\Users\mehme\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T19:34:44.419084" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>${ALIAS}</arg>
-<arg>/carts/${cart_id}</arg>
-<arg>json=${cart_data}</arg>
-<doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-07-27T19:34:44.300271" elapsed="0.118869"/>
-</kw>
-<kw name="Should Be True" owner="BuiltIn">
-<arg>${response.ok}</arg>
-<arg>FakeAPI call failed with status code ${response.status_code}</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2025-07-27T19:34:44.419388" elapsed="0.001083"/>
-</kw>
-<return>
-<value>${response.json()['id']}</value>
-<status status="PASS" start="2025-07-27T19:34:44.420570" elapsed="0.000055"/>
-</return>
-<msg time="2025-07-27T19:34:44.421055" level="INFO">${id} = 5</msg>
-<var>${id}</var>
-<arg>${cart_id}</arg>
-<arg>${cart_data}</arg>
-<status status="PASS" start="2025-07-27T19:34:44.299932" elapsed="0.121151"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>Panier mis à jour : ID ${id}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-07-27T19:34:44.421552" elapsed="0.000433"/>
+<kw name="Select customer state" owner="commonm">
+<kw name="Select From List By Value" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:43.031224" level="INFO">Selecting options from selection list 'id=StateOrRegion' by value CA.</msg>
+<arg>${new_state}</arg>
+<arg>${STATE}</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<status status="PASS" start="2025-07-28T15:04:43.030768" elapsed="0.106201"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-07-27T19:34:46.423483" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
+<msg time="2025-07-28T15:04:44.137860" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-07-27T19:34:44.422206" elapsed="2.001529"/>
+<status status="PASS" start="2025-07-28T15:04:43.137103" elapsed="1.000955"/>
 </kw>
-<doc>Met à jour un panier existant dans FakeAPI</doc>
-<status status="PASS" start="2025-07-27T19:34:44.296316" elapsed="2.128119"/>
-</test>
-<test id="s1-t8" name="Update Cart non passant" line="64">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-07-27T19:34:46.426674" level="INFO">${cart_id} = 5</msg>
-<var>${cart_id}</var>
-<arg>5</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-07-27T19:34:46.426384" elapsed="0.000336"/>
+<status status="PASS" start="2025-07-28T15:04:43.030329" elapsed="1.107910"/>
 </kw>
-<kw name="Create List" owner="BuiltIn">
-<msg time="2025-07-27T19:34:46.427276" level="INFO">${products} = ['{"productId":1,"quantity":"beaucoup"}']</msg>
-<var>${products}</var>
-<arg>{"productId":1,"quantity":"beaucoup"}</arg>
-<doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2025-07-27T19:34:46.427050" elapsed="0.000270"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-07-27T19:34:46.427920" level="INFO">${cart_data} = {'userId': 'string_invalide', 'date': 'invalid-date', 'products': ['{"productId":1,"quantity":"beaucoup"}']}</msg>
-<var>${cart_data}</var>
-<arg>userId=string_invalide</arg>
-<arg>date=invalid-date</arg>
-<arg>products=${products}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-07-27T19:34:46.427603" elapsed="0.000354"/>
-</kw>
-<kw name="Update Cart" owner="commonm">
-<kw name="PUT On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T19:34:46.553820" level="INFO">PUT Request : url=https://fakestoreapi.com/carts/5 
- path_url=/carts/5 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '114'} 
- body=b'{"userId": "string_invalide", "date": "invalid-date", "products": ["{\\"productId\\":1,\\"quantity\\":\\"beaucoup\\"}"]}' 
- </msg>
-<msg time="2025-07-27T19:34:46.554357" level="INFO">PUT Response : url=https://fakestoreapi.com/carts/5 
- status=200, reason=OK 
- headers={'Date': 'Sun, 27 Jul 2025 19:34:47 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"74-9ovEtoUD9epgWOv0e6IEAkiJZ5g"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=VL330GmOfw2sT6mQcgU8oYv6y1%2FIVkG%2BPUzviUCWesQHyJeJnS00RAfDK6ziWk8ipMJhYcr8rOjDnNK1gjdu86kolgbONRcikeix8CxV6v8%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '965e937f7b0d0419-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"id":5,"userId":"string_invalide","date":"invalid-date","products":["{\"productId\":1,\"quantity\":\"beaucoup\"}"]} 
- </msg>
-<msg time="2025-07-27T19:34:46.554526" level="INFO">C:\Users\mehme\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T19:34:46.555124" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>${ALIAS}</arg>
-<arg>/carts/${cart_id}</arg>
-<arg>json=${cart_data}</arg>
-<doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-07-27T19:34:46.428638" elapsed="0.126569"/>
-</kw>
-<kw name="Should Be True" owner="BuiltIn">
-<arg>${response.ok}</arg>
-<arg>FakeAPI call failed with status code ${response.status_code}</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2025-07-27T19:34:46.555587" elapsed="0.001877"/>
-</kw>
-<return>
-<value>${response.json()['id']}</value>
-<status status="PASS" start="2025-07-27T19:34:46.557582" elapsed="0.000072"/>
-</return>
-<msg time="2025-07-27T19:34:46.558379" level="INFO">${id} = 5</msg>
-<var>${id}</var>
-<arg>${cart_id}</arg>
-<arg>${cart_data}</arg>
-<status status="PASS" start="2025-07-27T19:34:46.428292" elapsed="0.130141"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>Panier mis à jour : ID ${id}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-07-27T19:34:46.559067" elapsed="0.000444"/>
+<kw name="Select customer gender" owner="commonm">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:44.140754" level="INFO">Clicking element '//*[@id="loginform"]/div/div/div/div/form/div[6]/input[1]'.</msg>
+<arg>${xpath_gender}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:44.140419" elapsed="0.143402"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-07-27T19:34:48.561013" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
+<msg time="2025-07-28T15:04:45.284891" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-07-27T19:34:46.559976" elapsed="2.001338"/>
+<status status="PASS" start="2025-07-28T15:04:44.283971" elapsed="1.001107"/>
 </kw>
-<doc>Met à jour un panier non existant ou avec données invalides</doc>
-<status status="PASS" start="2025-07-27T19:34:46.425516" elapsed="2.137366"/>
-</test>
-<test id="s1-t9" name="Delete Cart non passant" line="73">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-07-27T19:34:48.566134" level="INFO">${cart_id} = cart-faux</msg>
-<var>${cart_id}</var>
-<arg>cart-faux</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-07-27T19:34:48.565731" elapsed="0.000467"/>
+<status status="PASS" start="2025-07-28T15:04:44.139924" elapsed="1.145305"/>
 </kw>
-<kw name="Delete Cart" owner="commonm">
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T19:34:48.678191" level="INFO">DELETE Request : url=https://fakestoreapi.com/carts/cart-faux 
- path_url=/carts/cart-faux 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2025-07-27T19:34:48.678923" level="INFO">DELETE Response : url=https://fakestoreapi.com/carts/cart-faux 
- status=400, reason=Bad Request 
- headers={'Date': 'Sun, 27 Jul 2025 19:34:49 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '57', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"39-eWJKekXEKg16Sl+SzKMPamaRzT0"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=XvvmRy2uXwuJQ6OVwWKCXL6TvIp2Ih5ie5EdQsSeQjAvYMRjzTWLHx11Zyu90aCKStZ93wYdXImB3VYUyBJ21WelfBE%2BVZLKVQ76WLn6WVw%3D"}]}', 'Server': 'cloudflare', 'CF-RAY': '965e938cd96a0419-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"status":"error","message":"cart id should be provided"} 
- </msg>
-<msg time="2025-07-27T19:34:48.679246" level="INFO">C:\Users\mehme\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T19:34:48.680232" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/carts/cart-faux</msg>
-<var>${response}</var>
-<arg>${ALIAS}</arg>
-<arg>/carts/${cart_id}</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="FAIL" start="2025-07-27T19:34:48.567196" elapsed="0.115403">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/carts/cart-faux</status>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:48.683109" elapsed="0.000095"/>
-</kw>
-<return>
-<value>${response.json()['id']}</value>
-<status status="NOT RUN" start="2025-07-27T19:34:48.683348" elapsed="0.000065"/>
-</return>
-<var>${id}</var>
-<arg>${cart_id}</arg>
-<status status="FAIL" start="2025-07-27T19:34:48.566710" elapsed="0.116948">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/carts/cart-faux</status>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>Panier supprimé : ID ${id}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:48.684271" elapsed="0.000077"/>
+<kw name="Optionally check promotion checkbox" owner="commonm">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:45.287652" level="INFO">Clicking element 'name=promos-name'.</msg>
+<arg>${name_promotion}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:45.287365" elapsed="0.118931"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<arg>2s</arg>
+<msg time="2025-07-28T15:04:46.407637" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2025-07-27T19:34:48.684690" elapsed="0.000057"/>
+<status status="PASS" start="2025-07-28T15:04:45.406442" elapsed="1.001543"/>
 </kw>
-<doc>Supprime un panier non existant</doc>
-<status status="FAIL" start="2025-07-27T19:34:48.565038" elapsed="0.120077">HTTPError: 400 Client Error: Bad Request for url: https://fakestoreapi.com/carts/cart-faux</status>
+<status status="PASS" start="2025-07-28T15:04:45.286870" elapsed="1.121359"/>
+</kw>
+<kw name="Click Save Customer button" owner="commonm">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:46.411647" level="INFO">Clicking element 'xpath=//*[@id="loginform"]/div/div/div/div/form/button'.</msg>
+<arg>${submit_new_customer}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:46.411238" elapsed="0.644998"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:49.057477" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:47.056373" elapsed="2.001336"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:49.071722" level="INFO">Current page contains text 'Success! New customer added.'.</msg>
+<arg>text=${title_customer_added}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-28T15:04:49.058069" elapsed="0.013751"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:51.073124" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:49.071977" elapsed="2.001365"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:46.410724" elapsed="4.662823"/>
+</kw>
+<doc>Vérifie que l'utilisateur peut ajouter un nouveau client avec succès.</doc>
+<tag>smoke</tag>
+<status status="PASS" start="2025-07-28T15:04:35.706342" elapsed="15.368619"/>
 </test>
-<status status="FAIL" start="2025-07-27T19:34:38.597511" elapsed="10.089168"/>
+<test id="s1-t4" name="Should be able to cancel adding new customer" line="47">
+<kw name="Click New Customer button" owner="commonm">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:51.078894" level="INFO">Clicking element 'id=new-customer'.</msg>
+<arg>${btn_newCustomer}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:51.078495" elapsed="0.363446"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:51.458241" level="INFO">Current page contains text 'Add Customer'.</msg>
+<arg>text=${title_newCustomer}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-28T15:04:51.442139" elapsed="0.016183"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:53.459358" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:51.458452" elapsed="2.001246"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:51.077917" elapsed="2.382037"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:53.462375" level="INFO">Clicking element 'xpath=//*[@id="loginform"]/div/div/div/div/form/a'.</msg>
+<arg>${btn_cancelNewCustomer}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-28T15:04:53.461834" elapsed="0.321633"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-28T15:04:55.785073" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-07-28T15:04:53.783859" elapsed="2.001461"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-28T15:04:55.805085" level="INFO">Current page contains text 'Our Happy Customers'.</msg>
+<arg>text=${title_customer_list}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-28T15:04:55.787151" elapsed="0.018074"/>
+</kw>
+<doc>Vérifie que l'utilisateur peut annuler l'ajout d'un nouveau client.</doc>
+<tag>Functional</tag>
+<status status="PASS" start="2025-07-28T15:04:51.076640" elapsed="4.728959"/>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-07-28T15:04:55.807175" elapsed="6.378913"/>
+</kw>
+<status status="PASS" start="2025-07-28T15:04:00.956448" elapsed="61.229734"/>
 </suite>
 <statistics>
 <total>
-<stat pass="4" fail="5" skip="0">All Tests</stat>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="2" fail="0" skip="0">Functional</stat>
+<stat pass="2" fail="0" skip="0">smoke</stat>
 </tag>
 <suite>
-<stat name="Testcasesm" id="s1" pass="4" fail="5" skip="0">Testcasesm</stat>
+<stat name="Testcasesm" id="s1" pass="4" fail="0" skip="0">Testcasesm</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2025-07-28T15:04:02.060104" level="WARN">There was an error managing MicrosoftEdge (error sending request for url (https://msedgedriver.azureedge.net/LATEST_RELEASE_138_WINDOWS): error trying to connect: dns error: Hôte inconnu. (os error 11001)); using driver found in the cache</msg>
 </errors>
 </robot>
