@@ -15,10 +15,10 @@ Open Application and Login
     Enter password
     Log In
     Sleep    3s
-    # Add New Pestore
-    # Search Pestore
+    Add New Product
+    Sleep    3s
 
-# View Products
-#     View Product
-#     Sleep    3s
+View Products
+    View detail Product
+    Sleep    3s
     

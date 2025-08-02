@@ -1,29 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-06-27T18:54:16.338829" rpa="false" schemaversion="5">
-<suite id="s1" name="Fakestore Api Tests" source="C:\Users\Abdou Fatah Ndiaye\Desktop\QA_TEST\rbtApi\testcases\fakestore_api_tests.robot">
-<kw name="1. Open web browser" owner="fakestore_keywords" type="SETUP">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-06-27T18:54:17.056213" level="INFO">Opening browser 'chrome' to base url 'https://automationplayground.com/crm/'.</msg>
-<msg time="2025-06-27T18:55:41.719261" level="INFO">Cannot capture screenshot because no browser is open.</msg>
-<msg time="2025-06-27T18:55:41.720223" level="FAIL">NoSuchDriverException: Message: Unable to obtain driver for chrome using Selenium Manager.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
-</msg>
-<arg>${JENKINS_URL}</arg>
-<arg>chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="FAIL" start="2025-06-27T18:54:17.056213" elapsed="84.673574">NoSuchDriverException: Message: Unable to obtain driver for chrome using Selenium Manager.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
-</status>
+<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-08-01T21:47:37.473959" rpa="false" schemaversion="5">
+<suite id="s1" name="fakestore api testsF" source="C:\Users\Abdou Fatah Ndiaye\Desktop\QA_TEST\qa_test\Lab1\testcases\fakestore_api_testsF.robot">
+<test id="s1-t1" name="Create Product - Success" line="9">
+<kw name="Read Product - Fail Not Found" owner="fakestore_keywordsF">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-01T21:47:38.559052" level="INFO">${fake_id} = 000000000000000000000000</msg>
+<var>${fake_id}</var>
+<arg>__import__('bson').ObjectId("000000000000000000000000")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-01T21:47:38.559052" elapsed="0.000000"/>
 </kw>
-<status status="FAIL" start="2025-06-27T18:54:17.056213" elapsed="84.673574">NoSuchDriverException: Message: Unable to obtain driver for chrome using Selenium Manager.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
-</status>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-01T21:47:38.847539" level="INFO">${client} = MongoClient(host=['ac-brez5pk-shard-00-01.5bsmorj.mongodb.net:27017', 'ac-brez5pk-shard-00-02.5bsmorj.mongodb.net:27017', 'ac-brez5pk-shard-00-00.5bsmorj.mongodb.net:27017'], document_class=dict, tz_a...</msg>
+<var>${client}</var>
+<arg>__import__('pymongo').MongoClient(r"mongodb+srv://lab1:passer123@lab1.5bsmorj.mongodb.net/?retryWrites=true&amp;w=majority&amp;appName=Lab1")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-01T21:47:38.559052" elapsed="0.288487"/>
 </kw>
-<test id="s1-t1" name="Home page should load" line="9">
-<status status="FAIL" start="2025-06-27T18:55:41.729787" elapsed="0.001356">Parent suite setup failed:
-NoSuchDriverException: Message: Unable to obtain driver for chrome using Selenium Manager.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
-</status>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-01T21:47:38.847539" level="FAIL">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</msg>
+<var>${db}</var>
+<arg>${client}["fakeStoreDB"]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="FAIL" start="2025-08-01T21:47:38.847539" elapsed="0.000000">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</status>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${col}</var>
+<arg>${db}["products"]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-08-01T21:47:38.849045" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${product}</var>
+<arg>${col}.find_one({"_id": ${fake_id}})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-08-01T21:47:38.849045" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Empty" owner="BuiltIn">
+<arg>${product}</arg>
+<arg>Le produit n'existe pas</arg>
+<doc>Verifies that the given item is empty.</doc>
+<status status="NOT RUN" start="2025-08-01T21:47:38.849045" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-08-01T21:47:38.557032" elapsed="0.292013">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</status>
+</kw>
+<status status="FAIL" start="2025-08-01T21:47:38.556056" elapsed="0.294004">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</status>
 </test>
-<status status="FAIL" start="2025-06-27T18:54:16.338829" elapsed="85.393319">Suite setup failed:
-NoSuchDriverException: Message: Unable to obtain driver for chrome using Selenium Manager.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
-</status>
+<status status="FAIL" start="2025-08-01T21:47:37.477488" elapsed="1.373572"/>
 </suite>
 <statistics>
 <total>
@@ -32,7 +55,7 @@ NoSuchDriverException: Message: Unable to obtain driver for chrome using Seleniu
 <tag>
 </tag>
 <suite>
-<stat name="Fakestore Api Tests" id="s1" pass="0" fail="1" skip="0">Fakestore Api Tests</stat>
+<stat name="fakestore api testsF" id="s1" pass="0" fail="1" skip="0">fakestore api testsF</stat>
 </suite>
 </statistics>
 <errors>

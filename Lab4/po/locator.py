@@ -4,11 +4,18 @@ LOGIN               =   "//android.widget.Button[@content-desc=\"Se connecter\"]
 PAGE_FORM           =   "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]"
 FORM_TITLE          =   "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]"
 
-# Diallo App Locators
-EMAIL               =   "//android.widget.EditText[@content-desc=\"Email\"]"
-PASSWORD_LOGIN      =   "//android.widget.EditText[@content-desc=\"Mot de passe\"]"
-LOGIN_BUTTON        =   "//android.view.ViewGroup[@content-desc=\"Se connecter\"]"
-PAGE_FORMS          =   "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup"
+#En utilisant pas xpath
+USERNAMES           =   "android=new UiSelector().className(\"android.widget.EditText\").instance(0)"
+PASSWORDS           =   "android=new UiSelector().className(\"android.widget.EditText\").instance(1)"
+LOGIN_BTN           =   "android=new UiSelector().description(\"Se connecter\")"
+PAGE_FORMS          =   "android=new UiSelector().description(\"Liste des produits\")"
+FORM_TITLES         =   "android=new UiSelector().className(\"android.widget.EditText\").instance(0)"
+FORM_PRICES         =   "android=new UiSelector().className(\"android.widget.EditText\").instance(1)"
+FORM_DESCRIPTIONS   =   "android=new UiSelector().className(\"android.widget.EditText\").instance(2)"
+FORM_CATEGORIES     =   "android=new UiSelector().className(\"android.widget.EditText\").instance(3)"
+FROM_URLS           =   "android=new UiSelector().className(\"android.widget.EditText\").instance(4)"
+FORM_BUTTON_ADDS    =   "android=new UiSelector().description(\"Ajouter\")"
+VIEW_PRODUCT        =   "android=new UiSelector().description(\"Mens Cotton Jacket\n55.99 $\")"
 
 # FORM ELEMENTS
 FORM_TITRE          =   "//android.view.View[@content-desc=\"Ajouter un produit\"]"
@@ -18,9 +25,3 @@ FORM_DESCRIPTION    =   "//android.widget.FrameLayout[@resource-id=\"android:id/
 FORM_CATEGORIE      =   "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[4]"
 FORM_URL            =   "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[5]"
 FORM_BUTTON_ADD     =   "accessibility_id=Ajouter"
-
-ADD_BUTTON          =   "//android.widget.Button"
-FORM_ID             =   "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]"
-FORM_NAME           =   "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]"
-SELECTED_STATUT     =   "//android.widget.Button[@content-desc=\"Statutavailable\"]"
-BUTTON_CREATE       =   "//android.widget.Button[@content-desc=\"Créer\"]"
