@@ -1,357 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-07-27T23:32:23.881659" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-08-01T21:47:37.473959" rpa="false" schemaversion="5">
 <suite id="s1" name="fakestore api testsF" source="C:\Users\Abdou Fatah Ndiaye\Desktop\QA_TEST\qa_test\Lab1\testcases\fakestore_api_testsF.robot">
-<kw name="Create Fakestore Session" owner="fakestore_keywordsF" type="SETUP">
-<kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-07-27T23:32:24.766984" level="INFO">Creating Session using : alias=fakestore, url=https://fakestoreapi.com, headers={'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>fakestore</arg>
-<arg>${BASE_URL}</arg>
-<arg>headers=${HEADERS}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-07-27T23:32:24.766984" elapsed="0.001047"/>
+<test id="s1-t1" name="Create Product - Success" line="9">
+<kw name="Read Product - Fail Not Found" owner="fakestore_keywordsF">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-01T21:47:38.559052" level="INFO">${fake_id} = 000000000000000000000000</msg>
+<var>${fake_id}</var>
+<arg>__import__('bson').ObjectId("000000000000000000000000")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-01T21:47:38.559052" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-07-27T23:32:24.765398" elapsed="0.002633"/>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-01T21:47:38.847539" level="INFO">${client} = MongoClient(host=['ac-brez5pk-shard-00-01.5bsmorj.mongodb.net:27017', 'ac-brez5pk-shard-00-02.5bsmorj.mongodb.net:27017', 'ac-brez5pk-shard-00-00.5bsmorj.mongodb.net:27017'], document_class=dict, tz_a...</msg>
+<var>${client}</var>
+<arg>__import__('pymongo').MongoClient(r"mongodb+srv://lab1:passer123@lab1.5bsmorj.mongodb.net/?retryWrites=true&amp;w=majority&amp;appName=Lab1")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-08-01T21:47:38.559052" elapsed="0.288487"/>
 </kw>
-<test id="s1-t1" name="Create Product Successfully" line="10">
-<kw name="Create Valid Product" owner="fakestore_keywordsF">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-07-27T23:32:24.769990" level="INFO">${payload} = {'title': 'Maffe', 'price': '1200', 'description': 'Plat traditionnel sénégalais.', 'image': 'http://example.com/maffe.jpg', 'category': 'viandes'}</msg>
-<var>${payload}</var>
-<arg>title=Maffe</arg>
-<arg>price=1200</arg>
-<arg>description=Plat traditionnel sénégalais.</arg>
-<arg>image=http://example.com/maffe.jpg</arg>
-<arg>category=viandes</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-07-27T23:32:24.769026" elapsed="0.000964"/>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-01T21:47:38.847539" level="FAIL">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</msg>
+<var>${db}</var>
+<arg>${client}["fakeStoreDB"]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="FAIL" start="2025-08-01T21:47:38.847539" elapsed="0.000000">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</status>
 </kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T23:32:25.310152" level="INFO">POST Request : url=https://fakestoreapi.com/products 
- path_url=/products 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '157'} 
- body=b'{"title": "Maffe", "price": "1200", "description": "Plat traditionnel s\\u00e9n\\u00e9galais.", "image": "http://example.com/maffe.jpg", "category": "viandes"}' 
- </msg>
-<msg time="2025-07-27T23:32:25.310152" level="INFO">POST Response : url=https://fakestoreapi.com/products 
- status=200, reason=OK 
- headers={'Date': 'Sun, 27 Jul 2025 23:32:25 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"94-dgswjPCP2atpxhn4SCnW3Z9fBMo"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=GdJ%2FBGQEz2cIdXgJiZ%2FzuZ3eOHvMWW3ZhelpEHVk%2FQOVeLtgGO5njq5NXOYSNqBvlw4kfAZZHrM9sUCxDsrX3LLaP%2FNFjBAqz441H5ao"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '965fef993f170148-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"id":21,"title":"Maffe","price":"1200","description":"Plat traditionnel sénégalais.","image":"http://example.com/maffe.jpg","category":"viandes"} 
- </msg>
-<msg time="2025-07-27T23:32:25.310152" level="INFO">C:\Python312\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T23:32:25.311116" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>fakestore</arg>
-<arg>${PRODUCT_ENDPOINT}</arg>
-<arg>json=${payload}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-07-27T23:32:24.769990" elapsed="0.541126"/>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${col}</var>
+<arg>${db}["products"]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-08-01T21:47:38.849045" elapsed="0.000000"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<arg>200</arg>
-<arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.311116" elapsed="0.000000"/>
-</kw>
-<kw name="To Json" owner="RequestsLibrary">
-<msg time="2025-07-27T23:32:25.312148" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
-<msg time="2025-07-27T23:32:25.313111" level="INFO">To JSON using : content={"id":21,"title":"Maffe","price":"1200","description":"Plat traditionnel sénégalais.","image":"http://example.com/maffe.jpg","category":"viandes"} </msg>
-<msg time="2025-07-27T23:32:25.313111" level="INFO">To JSON using : pretty_print=False </msg>
-<msg time="2025-07-27T23:32:25.313111" level="INFO">${data} = {'id': 21, 'title': 'Maffe', 'price': '1200', 'description': 'Plat traditionnel sénégalais.', 'image': 'http://example.com/maffe.jpg', 'category': 'viandes'}</msg>
-<var>${data}</var>
-<arg>${resp.content}</arg>
-<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.311116" elapsed="0.001995"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-07-27T23:32:25.313111" level="INFO">✅ Produit créé avec succès : {'id': 21, 'title': 'Maffe', 'price': '1200', 'description': 'Plat traditionnel sénégalais.', 'image': 'http://example.com/maffe.jpg', 'category': 'viandes'}</msg>
-<arg>✅ Produit créé avec succès : ${data}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.313111" elapsed="0.000000"/>
-</kw>
-<kw name="Return From Keyword" owner="BuiltIn">
-<msg time="2025-07-27T23:32:25.313111" level="INFO">Returning from the enclosing user keyword.</msg>
-<arg>${data}</arg>
-<doc>Returns from the enclosing user keyword.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.313111" elapsed="0.000000"/>
-</kw>
-<msg time="2025-07-27T23:32:25.314146" level="INFO">${id} = {'id': 21, 'title': 'Maffe', 'price': '1200', 'description': 'Plat traditionnel sénégalais.', 'image': 'http://example.com/maffe.jpg', 'category': 'viandes'}</msg>
-<var>${id}</var>
-<status status="PASS" start="2025-07-27T23:32:24.769026" elapsed="0.545120"/>
-</kw>
-<kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2025-07-27T23:32:25.314146" level="INFO">Length is 6.</msg>
-<arg>${id}</arg>
-<doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.314146" elapsed="0.000000"/>
-</kw>
-<status status="PASS" start="2025-07-27T23:32:24.769026" elapsed="0.545120"/>
-</test>
-<test id="s1-t2" name="Create Product Without Title" line="14">
-<kw name="Create Product Missing Title" owner="fakestore_keywordsF">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-07-27T23:32:25.316326" level="INFO">${payload} = {'price': '1200', 'description': 'Produit sans titre', 'image': 'http://example.com/no-title.jpg', 'category': 'autre'}</msg>
-<var>${payload}</var>
-<arg>price=1200</arg>
-<arg>description=Produit sans titre</arg>
-<arg>image=http://example.com/no-title.jpg</arg>
-<arg>category=autre</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.316326" elapsed="0.000000"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T23:32:25.437539" level="INFO">POST Request : url=https://fakestoreapi.com/products 
- path_url=/products 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '119'} 
- body=b'{"price": "1200", "description": "Produit sans titre", "image": "http://example.com/no-title.jpg", "category": "autre"}' 
- </msg>
-<msg time="2025-07-27T23:32:25.437539" level="INFO">POST Response : url=https://fakestoreapi.com/products 
- status=200, reason=OK 
- headers={'Date': 'Sun, 27 Jul 2025 23:32:25 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"78-VWq+JH4m59H0+PZ5YZ1f0erVrdE"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=K8GRdehiFlEHiklNdiqgt%2B1HYGCUij36U%2BmU1eyT9Ioyv6hu%2FH3SkIGg%2F8QYmZSaov9P2wmNupn6KFJoUPi3Tlm7Q59Fmf6fGzKklIbP"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '965fef9a99620148-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"id":21,"price":"1200","description":"Produit sans titre","image":"http://example.com/no-title.jpg","category":"autre"} 
- </msg>
-<msg time="2025-07-27T23:32:25.437539" level="INFO">C:\Python312\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T23:32:25.437539" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>fakestore</arg>
-<arg>${PRODUCT_ENDPOINT}</arg>
-<arg>json=${payload}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.316326" elapsed="0.121213"/>
-</kw>
-<kw name="Should Not Be Equal As Strings" owner="BuiltIn">
-<msg time="2025-07-27T23:32:25.438541" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<msg time="2025-07-27T23:32:25.438541" level="FAIL">200 == 200</msg>
-<arg>${resp.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are equal after converting them to strings.</doc>
-<status status="FAIL" start="2025-07-27T23:32:25.438541" elapsed="0.000999">200 == 200</status>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>❌ Échec attendu de la création (title manquant)</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-07-27T23:32:25.439540" elapsed="0.000000"/>
-</kw>
-<status status="FAIL" start="2025-07-27T23:32:25.316326" elapsed="0.123214">200 == 200</status>
-</kw>
-<status status="FAIL" start="2025-07-27T23:32:25.315319" elapsed="0.124221">200 == 200</status>
-</test>
-<test id="s1-t3" name="Create Product With Invalid Type" line="17">
-<kw name="Create Product Invalid Type" owner="fakestore_keywordsF">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-07-27T23:32:25.441541" level="INFO">${payload} = {'title': 'Invalide', 'price': 'gratuit', 'description': 'Erreur sur type', 'image': 'http://example.com/img.jpg', 'category': 'autre'}</msg>
-<var>${payload}</var>
-<arg>title=Invalide</arg>
-<arg>price=gratuit</arg>
-<arg>description=Erreur sur type</arg>
-<arg>image=http://example.com/img.jpg</arg>
-<arg>category=autre</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.441541" elapsed="0.000000"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T23:32:25.560961" level="INFO">POST Request : url=https://fakestoreapi.com/products 
- path_url=/products 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '135'} 
- body=b'{"title": "Invalide", "price": "gratuit", "description": "Erreur sur type", "image": "http://example.com/img.jpg", "category": "autre"}' 
- </msg>
-<msg time="2025-07-27T23:32:25.561926" level="INFO">POST Response : url=https://fakestoreapi.com/products 
- status=200, reason=OK 
- headers={'Date': 'Sun, 27 Jul 2025 23:32:25 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"86-dI6pboFtnc15VrdSOtfn7M/OHrg"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=zE%2Ba2qIp%2FDBQTAnYaG66iwRjl3378YHgwK%2FoaPDXMpb0%2BSshbe3HV6BmkLqQZP9ryVHTNFXAqjzZO%2F9Zs4e7vxDfjWkXLRxv%2BrhdPvCA"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '965fef9b6a7b0148-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"id":21,"title":"Invalide","price":"gratuit","description":"Erreur sur type","image":"http://example.com/img.jpg","category":"autre"} 
- </msg>
-<msg time="2025-07-27T23:32:25.561926" level="INFO">C:\Python312\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T23:32:25.561926" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>fakestore</arg>
-<arg>${PRODUCT_ENDPOINT}</arg>
-<arg>json=${payload}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.441541" elapsed="0.120385"/>
-</kw>
-<kw name="Should Not Be Equal As Strings" owner="BuiltIn">
-<msg time="2025-07-27T23:32:25.562923" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<msg time="2025-07-27T23:32:25.562923" level="FAIL">200 == 200</msg>
-<arg>${resp.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are equal after converting them to strings.</doc>
-<status status="FAIL" start="2025-07-27T23:32:25.562923" elapsed="0.000000">200 == 200</status>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>❌ Échec attendu de la création (price invalide)</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-07-27T23:32:25.563922" elapsed="0.000000"/>
-</kw>
-<status status="FAIL" start="2025-07-27T23:32:25.441541" elapsed="0.122381">200 == 200</status>
-</kw>
-<status status="FAIL" start="2025-07-27T23:32:25.440542" elapsed="0.123380">200 == 200</status>
-</test>
-<test id="s1-t4" name="Get Product Successfully" line="20">
-<kw name="Get Existing Product" owner="fakestore_keywordsF">
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T23:32:25.688107" level="INFO">GET Request : url=https://fakestoreapi.com/products/5 
- path_url=/products/5 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2025-07-27T23:32:25.688107" level="INFO">GET Response : url=https://fakestoreapi.com/products/5 
- status=200, reason=OK 
- headers={'Date': 'Sun, 27 Jul 2025 23:32:25 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"1c4-yV39eLSyZctGOOmgynRocvEzFjQ"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=LVSn7w2Sy%2FD9fJ3cskUWNaGjinhkWPYijkkqj4GrWVf8oxOtzSiIy5lKa3FYYRwEotESF0mF7SxAlzrHWK94kDdkyZTyNPwSSxjjcDtH"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '965fef9c2b860148-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body={"id":5,"title":"John Hardy Women's Legends Naga Gold &amp; Silver Dragon Station Chain Bracelet","price":695,"description":"From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.","category":"jewelery","image":"https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg","rating":{"rate":4.6,"count":400}} 
- </msg>
-<msg time="2025-07-27T23:32:25.688107" level="INFO">C:\Python312\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T23:32:25.689100" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>fakestore</arg>
-<arg>${PRODUCT_ENDPOINT}/${product_id}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.567437" elapsed="0.121663"/>
-</kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<arg>200</arg>
-<arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.689100" elapsed="0.000000"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-07-27T23:32:25.690106" level="INFO">${data} = {'id': 5, 'title': "John Hardy Women's Legends Naga Gold &amp; Silver Dragon Station Chain Bracelet", 'price': 695, 'description': "From our Legends Collection, the Naga was inspired by the mythical water...</msg>
-<var>${data}</var>
-<arg>${resp.json()}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.689100" elapsed="0.001006"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>✅ Produit trouvé : ${data}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.690106" elapsed="0.001000"/>
-</kw>
-<return>
-<value>${data}</value>
-<status status="PASS" start="2025-07-27T23:32:25.691106" elapsed="0.000000"/>
-</return>
-<msg time="2025-07-27T23:32:25.692100" level="INFO">${product} = {'id': 5, 'title': "John Hardy Women's Legends Naga Gold &amp; Silver Dragon Station Chain Bracelet", 'price': 695, 'description': "From our Legends Collection, the Naga was inspired by the mythical water...</msg>
+<kw name="Evaluate" owner="BuiltIn">
 <var>${product}</var>
-<arg>5</arg>
-<status status="PASS" start="2025-07-27T23:32:25.566429" elapsed="0.125671"/>
+<arg>${col}.find_one({"_id": ${fake_id}})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-08-01T21:47:38.849045" elapsed="0.000000"/>
 </kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-07-27T23:32:25.693100" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${product["id"]}</arg>
-<arg>5</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.692100" elapsed="0.001000"/>
+<kw name="Should Be Empty" owner="BuiltIn">
+<arg>${product}</arg>
+<arg>Le produit n'existe pas</arg>
+<doc>Verifies that the given item is empty.</doc>
+<status status="NOT RUN" start="2025-08-01T21:47:38.849045" elapsed="0.000000"/>
 </kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${product["title"]}</arg>
-<arg>Dragon</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.693611" elapsed="0.001010"/>
+<status status="FAIL" start="2025-08-01T21:47:38.557032" elapsed="0.292013">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</status>
 </kw>
-<status status="PASS" start="2025-07-27T23:32:25.565922" elapsed="0.128699"/>
+<status status="FAIL" start="2025-08-01T21:47:38.556056" elapsed="0.294004">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</status>
 </test>
-<test id="s1-t5" name="Get Product Not Found" line="25">
-<kw name="Get Product Not Found" owner="fakestore_keywordsF">
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T23:32:25.820355" level="INFO">GET Request : url=https://fakestoreapi.com/products/99999 
- path_url=/products/99999 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2025-07-27T23:32:25.820355" level="INFO">GET Response : url=https://fakestoreapi.com/products/99999 
- status=200, reason=OK 
- headers={'Date': 'Sun, 27 Jul 2025 23:32:25 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ppP0r%2FZwHXEwVISCzaiCU819RQM8jND5B5pojx2dh8ZZbeNG0ToOGjZYNXFHS8eTsw0BRILr%2BlfbIDti9KlamAIWEWVWWoaQlZiP9vkE"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '965fef9d0c8a0148-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body=None 
- </msg>
-<msg time="2025-07-27T23:32:25.820355" level="INFO">C:\Python312\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T23:32:25.821942" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>fakestore</arg>
-<arg>${PRODUCT_ENDPOINT}/99999</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.697150" elapsed="0.124792"/>
-</kw>
-<kw name="Should Not Be Equal As Strings" owner="BuiltIn">
-<msg time="2025-07-27T23:32:25.823985" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<msg time="2025-07-27T23:32:25.824988" level="FAIL">200 == 200</msg>
-<arg>${resp.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are equal after converting them to strings.</doc>
-<status status="FAIL" start="2025-07-27T23:32:25.822990" elapsed="0.001998">200 == 200</status>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>❌ Produit inexistant détecté comme prévu</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-07-27T23:32:25.825989" elapsed="0.000000"/>
-</kw>
-<status status="FAIL" start="2025-07-27T23:32:25.696137" elapsed="0.130403">200 == 200</status>
-</kw>
-<status status="FAIL" start="2025-07-27T23:32:25.696137" elapsed="0.131432">200 == 200</status>
-</test>
-<test id="s1-t6" name="Get Product Invalid ID" line="28">
-<kw name="Get Product Invalid ID" owner="fakestore_keywordsF">
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2025-07-27T23:32:25.958798" level="INFO">GET Request : url=https://fakestoreapi.com/products/abc 
- path_url=/products/abc 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
- body=None 
- </msg>
-<msg time="2025-07-27T23:32:25.958798" level="INFO">GET Response : url=https://fakestoreapi.com/products/abc 
- status=200, reason=OK 
- headers={'Date': 'Sun, 27 Jul 2025 23:32:25 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=6zRjT%2FS0Vm%2FDZ%2BbV5XVqSNuPDG57vEF6nrEge1q7bHpprGdcWtuVBo1o3qRI34Zv6sGa%2Bl8XQnb%2FJTkXD5RzbxUff5UVpc4P1H2WdONp"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '965fef9ded950148-MAD', 'alt-svc': 'h3=":443"; ma=86400'} 
- body=None 
- </msg>
-<msg time="2025-07-27T23:32:25.958798" level="INFO">C:\Python312\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-07-27T23:32:25.959832" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>fakestore</arg>
-<arg>${PRODUCT_ENDPOINT}/abc</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-07-27T23:32:25.834196" elapsed="0.125636"/>
-</kw>
-<kw name="Should Not Be Equal As Strings" owner="BuiltIn">
-<msg time="2025-07-27T23:32:25.961842" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<msg time="2025-07-27T23:32:25.961842" level="FAIL">200 == 200</msg>
-<arg>${resp.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are equal after converting them to strings.</doc>
-<status status="FAIL" start="2025-07-27T23:32:25.959832" elapsed="0.002010">200 == 200</status>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>❌ Requête invalide traitée correctement</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-07-27T23:32:25.961842" elapsed="0.000000"/>
-</kw>
-<status status="FAIL" start="2025-07-27T23:32:25.832181" elapsed="0.130656">200 == 200</status>
-</kw>
-<status status="FAIL" start="2025-07-27T23:32:25.829618" elapsed="0.133219">200 == 200</status>
-</test>
-<status status="FAIL" start="2025-07-27T23:32:23.883108" elapsed="2.081694"/>
+<status status="FAIL" start="2025-08-01T21:47:37.477488" elapsed="1.373572"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="4" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="fakestore api testsF" id="s1" pass="2" fail="4" skip="0">fakestore api testsF</stat>
+<stat name="fakestore api testsF" id="s1" pass="0" fail="1" skip="0">fakestore api testsF</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-07-27T23:32:25.312148" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
 </errors>
 </robot>

@@ -1,49 +1,52 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    RequestsLibrary
-
 Library    Collections
-Variables    ../pageobject/variablesF.py
-    
+Library    OperatingSystem
+Library    String
+# Variables    ../pageobject/variablesF.py
+Library    ../ressources/connectDB.py
+
+*** Variables ***
+${MONGO_URI}     mongodb+srv://lab1:passer123@lab1.5bsmorj.mongodb.net/?retryWrites=true&w=majority&appName=Lab1
+${DB_NAME}       fakeStoreDB
+${COLLECTION}    products
 
 *** Keywords ***
-Create Fakestore Session
-    Create Session    fakestore    ${BASE_URL}    headers=${HEADERS}
+# Scenario passant pour l'ajout
+Create Product In MongoDB Without Helper File
+    ${product}=    Create Dictionary
+    ...    title=Maffe
+    ...    price=1200
+    ...    description=Plat sénégalais
+    ...    image=http://example.com/maffe.jpg
+    ...    category=viandes
 
-Create Valid Product
-    ${payload}=    Create Dictionary    title=Maffe    price=1200    description=Plat traditionnel sénégalais.    image=http://example.com/maffe.jpg    category=viandes
-    ${resp}=    POST On Session    fakestore    ${PRODUCT_ENDPOINT}    json=${payload}
-    Status Should Be    200    ${resp}
-    ${data}=    To Json    ${resp.content}
-    Log    ✅ Produit créé avec succès : ${data}
-    Return From Keyword    ${data}
+    ${inserted_id}=    Evaluate
+    ...    str(__import__('pymongo').MongoClient(r"mongodb+srv://lab1:passer123@lab1.5bsmorj.mongodb.net/?retryWrites=true&w=majority&appName=Lab1")["fakeStoreDB"]["products"].insert_one(${product}).inserted_id)
+    Should Not Be Empty    ${inserted_id}
+    Log    Produit inséré avec succès : ${inserted_id}
 
-Create Product Missing Title
-    ${payload}=    Create Dictionary    price=1200    description=Produit sans titre    image=http://example.com/no-title.jpg    category=autre
-    ${resp}=    POST On Session    fakestore    ${PRODUCT_ENDPOINT}    json=${payload}
-    Should Not Be Equal As Strings    ${resp.status_code}    200
-    Log    ❌ Échec attendu de la création (title manquant)
+# Scenario non passant pour l'ajout
+Create Product - Fail Missing Field
+    ${product}=    Create Dictionary
+    ...    price=1200
+    ...    description=Plat sénégalais
+    ...    image=http://example.com/maffe.jpg
+    ...    category=viandes
 
-Create Product Invalid Type
-    ${payload}=    Create Dictionary    title=Invalide    price=gratuit    description=Erreur sur type    image=http://example.com/img.jpg    category=autre
-    ${resp}=    POST On Session    fakestore    ${PRODUCT_ENDPOINT}    json=${payload}
-    Should Not Be Equal As Strings    ${resp.status_code}    200
-    Log    ❌ Échec attendu de la création (price invalide)
+    Dictionary Should Contain Key    ${product}    title
 
-Get Existing Product
-    [Arguments]    ${product_id}
-    ${resp}=    GET On Session    fakestore    ${PRODUCT_ENDPOINT}/${product_id}
-    Status Should Be    200    ${resp}
-    ${data}=    Set Variable    ${resp.json()}
-    Log To Console    ✅ Produit trouvé : ${data}
-    RETURN    ${data}
+Create Product - Fail Invalid Price Type
+    ${product}=    Create Dictionary
+    ...    title=Maffe
+    ...    price=prix_invalide
+    ...    description=Plat sénégalais
+    ...    image=http://example.com/maffe.jpg
+    ...    category=viandes
+    ${inserted_id}=    Evaluate
+    ...    str(__import__('pymongo').MongoClient(r"mongodb+srv://lab1:passer123@lab1.5bsmorj.mongodb.net/?retryWrites=true&w=majority&appName=Lab1")["fakeStoreDB"]["products"].insert_one(${product}).inserted_id)
+    ${is_valid}=    Run Keyword And Return Status    Evaluate    isinstance(${product['price']}, (int, float))
+    Should Be Equal    ${is_valid}    False    Le champ 'price' doit être invalide pour ce test.
 
-Get Product Not Found
-    ${resp}=    GET On Session    fakestore    ${PRODUCT_ENDPOINT}/99999
-    Should Not Be Equal As Strings    ${resp.status_code}    200
-    Log    ❌ Produit inexistant détecté comme prévu
 
-Get Product Invalid ID
-    ${resp}=    GET On Session    fakestore    ${PRODUCT_ENDPOINT}/abc
-    Should Not Be Equal As Strings    ${resp.status_code}    200
-    Log    ❌ Requête invalide traitée correctement
