@@ -16,7 +16,7 @@ Create shipping fulfillment fail
     CREATE SHIPPING FULFILLMENT FAIL    order_id=11441
 
 Delete inventory item
-    DELETE INVENTORY ITEM
+    DELETE INVENTORY ITEM    inventory_item_id=1212
 
 Create inventory item
     CREATE Or Replace Inventory Item    sku=5555
