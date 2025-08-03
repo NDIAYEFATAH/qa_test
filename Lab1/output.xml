@@ -1,61 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-08-01T21:47:37.473959" rpa="false" schemaversion="5">
-<suite id="s1" name="fakestore api testsF" source="C:\Users\Abdou Fatah Ndiaye\Desktop\QA_TEST\qa_test\Lab1\testcases\fakestore_api_testsF.robot">
+<robot generator="Robot 7.2.2 (Python 3.12.0 on win32)" generated="2025-08-03T13:32:28.864493" rpa="false" schemaversion="5">
+<suite id="s1" name="fakestore api testsF" source="C:\Users\Abdou Fatah Ndiaye\Desktop\QA_TEST\qa_test\lab1\testcases\fakestore_api_testsF.robot">
 <test id="s1-t1" name="Create Product - Success" line="9">
-<kw name="Read Product - Fail Not Found" owner="fakestore_keywordsF">
+<kw name="Delete Product - Fail Invalid ID" owner="fakestore_keywordsF">
+<kw name="Run Keyword And Expect Error" owner="BuiltIn">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-01T21:47:38.559052" level="INFO">${fake_id} = 000000000000000000000000</msg>
-<var>${fake_id}</var>
-<arg>__import__('bson').ObjectId("000000000000000000000000")</arg>
+<msg time="2025-08-03T13:32:30.399537" level="FAIL">Evaluating expression '__import__(\'bson\').ObjectId("id_invalide")' failed: InvalidId: 'id_invalide' is not a valid ObjectId, it must be a 12-byte input or a 24-character hex string</msg>
+<arg>__import__('bson').ObjectId("id_invalide")</arg>
+<arg>modules=bson</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-01T21:47:38.559052" elapsed="0.000000"/>
+<status status="FAIL" start="2025-08-03T13:32:30.399537" elapsed="0.000553">Evaluating expression '__import__(\'bson\').ObjectId("id_invalide")' failed: InvalidId: 'id_invalide' is not a valid ObjectId, it must be a 12-byte input or a 24-character hex string</status>
 </kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-01T21:47:38.847539" level="INFO">${client} = MongoClient(host=['ac-brez5pk-shard-00-01.5bsmorj.mongodb.net:27017', 'ac-brez5pk-shard-00-02.5bsmorj.mongodb.net:27017', 'ac-brez5pk-shard-00-00.5bsmorj.mongodb.net:27017'], document_class=dict, tz_a...</msg>
-<var>${client}</var>
-<arg>__import__('pymongo').MongoClient(r"mongodb+srv://lab1:passer123@lab1.5bsmorj.mongodb.net/?retryWrites=true&amp;w=majority&amp;appName=Lab1")</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-01T21:47:38.559052" elapsed="0.288487"/>
+<arg>*is not a valid ObjectId*</arg>
+<arg>Evaluate</arg>
+<arg>__import__('bson').ObjectId("id_invalide")</arg>
+<arg>modules=bson</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<status status="PASS" start="2025-08-03T13:32:30.399001" elapsed="0.001637"/>
 </kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-01T21:47:38.847539" level="FAIL">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</msg>
-<var>${db}</var>
-<arg>${client}["fakeStoreDB"]</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="FAIL" start="2025-08-01T21:47:38.847539" elapsed="0.000000">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</status>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Erreur attendue capturée : ID invalide pour suppression</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-08-03T13:32:30.401316" elapsed="0.000553"/>
 </kw>
-<kw name="Evaluate" owner="BuiltIn">
-<var>${col}</var>
-<arg>${db}["products"]</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-01T21:47:38.849045" elapsed="0.000000"/>
+<status status="PASS" start="2025-08-03T13:32:30.397352" elapsed="0.004517"/>
 </kw>
-<kw name="Evaluate" owner="BuiltIn">
-<var>${product}</var>
-<arg>${col}.find_one({"_id": ${fake_id}})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-01T21:47:38.849045" elapsed="0.000000"/>
-</kw>
-<kw name="Should Be Empty" owner="BuiltIn">
-<arg>${product}</arg>
-<arg>Le produit n'existe pas</arg>
-<doc>Verifies that the given item is empty.</doc>
-<status status="NOT RUN" start="2025-08-01T21:47:38.849045" elapsed="0.000000"/>
-</kw>
-<status status="FAIL" start="2025-08-01T21:47:38.557032" elapsed="0.292013">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</status>
-</kw>
-<status status="FAIL" start="2025-08-01T21:47:38.556056" elapsed="0.294004">Accessing '${client}["fakeStoreDB"]' failed: InvalidName: database names cannot contain the character '"'</status>
+<status status="PASS" start="2025-08-03T13:32:30.396249" elapsed="0.006314"/>
 </test>
-<status status="FAIL" start="2025-08-01T21:47:37.477488" elapsed="1.373572"/>
+<status status="PASS" start="2025-08-03T13:32:28.868502" elapsed="1.535298"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="fakestore api testsF" id="s1" pass="0" fail="1" skip="0">fakestore api testsF</stat>
+<stat name="fakestore api testsF" id="s1" pass="1" fail="0" skip="0">fakestore api testsF</stat>
 </suite>
 </statistics>
 <errors>
